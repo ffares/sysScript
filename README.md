@@ -5,6 +5,7 @@ sys.sh is bash script gives useful quick system information on Linux OS like ubu
 
 ```bash
 $ git clone https://github.com/ffares/sysScript.git
+$ cd sysScript
 ```
 
 ### Usage
