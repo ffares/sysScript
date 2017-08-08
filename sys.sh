@@ -1,6 +1,6 @@
 #!/bin/bash
 # sys shell script, shows system info
-# By Fares, Aug 2017
+# By Fares, Aug 2017 - fares.net
 #################################
 
 r=`tput setaf 8`
