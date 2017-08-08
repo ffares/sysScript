@@ -5,7 +5,7 @@ sys.sh is bash script to gives useful quick system information on Linux OS like 
 ### Installation
 
 ```bash
-$ git clone https://github.com/ffares/shell-scripts.git
+$ git clone https://github.com/ffares/sysScript.git
 ```
 
 ### Usage
