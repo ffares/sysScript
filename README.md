@@ -15,3 +15,7 @@ Using this script is very simple, just run this from the commndline Here:
 ```bash
 $ ./sys.sh
 ```
+
+### Screenshot 
+
+![Screenshot](screenshot.png)
