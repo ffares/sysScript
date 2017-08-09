@@ -1,6 +1,6 @@
 #!/bin/bash
 # sys shell script, shows system info
-# By Fares, Aug 2017 - fares.net
+# By Fares, Aug 2017
 # version 1.0 - fares.net
 #################################
 
@@ -22,12 +22,13 @@ PL=`uname -m`
 function serviceStatus () {
 if /etc/init.d/$1 status > /dev/null 
 then
-printf "  $1:\t${g}Running "
-service $1 status | grep "Active" | awk 'END {print $(NF-1), $NF}' ; printf "${z}"
+printf "  ${z}$1:\t${g}Running "
+service $1 status | grep "Active" | cut -d ";" -f2 
 else
 printf "  $1:\t${error}NO RUNNING${z}\n"
 fi
 } 
+
 
 clear
 printf "\n\n"
@@ -52,15 +53,19 @@ printf "  Hostname:\t"$HOSTNAME"\n"
 printf "  External IP:\t${b}"$MYIP"${z}\n"
 printf "  Local IP:\t"
 ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}' 
-
+printf "  Pi IP:\t"
+cat /hamad/pi/HomeNetworkIP.txt
 cat /etc/resolv.conf | awk '/^nameserver/{ printf "  Name Server:\t" $2 "\n"}'
 printf "\n"
+
 
 printf "${r}============ SERVICES ${z}\n"
 serviceStatus apache2
 serviceStatus mysql
-serviceStatus bind9
+#serviceStatus bind9
 #serviceStatus "ufw    "
 
 printf "\n"
 printf "\n"
+
+
