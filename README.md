@@ -18,4 +18,4 @@ $ ./sys.sh
 
 ### Screenshot 
 
-![Screenshot](screenshot.png)
+![Screenshot](source/screenshot.png)
