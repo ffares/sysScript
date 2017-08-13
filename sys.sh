@@ -1,7 +1,7 @@
 #!/bin/bash
 # sys shell script, shows system info
 # By Fares, Aug 2017
-# version 1.0 - fares.net 3
+# version 1.0 - fares.net 4
 #################################
 
 a=`tput setaf 1`
