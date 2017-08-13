@@ -1,13 +1,17 @@
 #!/bin/bash
 # sys shell script, shows system info
 # By Fares, Aug 2017
+<<<<<<< HEAD
 # version 1.0 - fares.net 3
+=======
+# version 1.0 - fares.net 2
+>>>>>>> 00851283a441ba3412e6e2750701cd6d4a505f4c
 #################################
 
+a=`tput setaf 1`
 r=`tput setaf 8`
 g=`tput setaf 2`
 b=`tput setaf 3`
-error=`tput setaf 1`
 z=`tput sgr0` # no color
 
 upSeconds="$(/usr/bin/cut -d. -f1 /proc/uptime)"
@@ -32,14 +36,19 @@ then
 printf "  ${z}$1:\t${g}Running "
 service $1 status | grep "Active" | cut -d ";" -f2 
 else
-printf "  $1:\t${error}NO RUNNING${z}\n"
+printf "  $1:\t${a}NO RUNNING${z}\n"
 fi
 } 
 
 printf "\n"
 clear
+<<<<<<< HEAD
 figlet fares.net
 printf "${r}============ SYSTEM ${z}\n"
+=======
+printf "\n\n"
+printf "${r}============ SYSTEM ${z} ${a}==> "$HOSTNAME" <==${z}\n"
+>>>>>>> 00851283a441ba3412e6e2750701cd6d4a505f4c
 printf "  Date:\t\t${b}"$DATE"${z}\n"
 printf "  Kernel:\t"$KERNEL" ("$PL")\n"
 printf "  Uptime:\t"$UPTIME"\n"
@@ -57,9 +66,7 @@ printf "\n${r}============ NETWORK ${z}\n"
 printf "  Hostname:\t"$HOSTNAME"\n"
 printf "  External IP:\t${b}"$MYIP"${z}\n"
 printf "  Local IP:\t"
-ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}' 
-printf "  Pi IP:\t"
-cat /hamad/pi/HomeNetworkIP.txt
+ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}' | cut -d ":" -f2 
 cat /etc/resolv.conf | awk '/^nameserver/{ printf "  Name Server:\t" $2 "\n"}'
 printf "\n"
 
@@ -67,10 +74,11 @@ printf "\n"
 printf "${r}============ SERVICES ${z}\n"
 serviceStatus apache2
 serviceStatus mysql
-#serviceStatus bind9
+serviceStatus bind9
 #serviceStatus "ufw    "
 
 printf "\n"
 printf "\n"
 
 
+exit 0
