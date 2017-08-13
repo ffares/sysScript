@@ -1,7 +1,7 @@
 #!/bin/bash
 # sys shell script, shows system info
 # By Fares, Aug 2017
-# version 1.0 - fares.net
+# version 1.0 - fares.net 3
 #################################
 
 r=`tput setaf 8`
@@ -9,6 +9,12 @@ g=`tput setaf 2`
 b=`tput setaf 3`
 error=`tput setaf 1`
 z=`tput sgr0` # no color
+
+upSeconds="$(/usr/bin/cut -d. -f1 /proc/uptime)"
+secs=$((${upSeconds}%60))
+mins=$((${upSeconds}/60%60))
+hours=$((${upSeconds}/3600%24))
+days=$((${upSeconds}/86400))
 
 IFS=$'\n'
 USERS=`users`
@@ -18,6 +24,7 @@ CPWD=`pwd`
 ME=`whoami`
 MYIP=`curl -s ipinfo.io/ip`
 PL=`uname -m`
+UPTIME=`printf "%d days, %02dh %02dm %02ds" "$days" "$hours" "$mins" "$secs"`
 
 function serviceStatus () {
 if /etc/init.d/$1 status > /dev/null 
@@ -29,22 +36,20 @@ printf "  $1:\t${error}NO RUNNING${z}\n"
 fi
 } 
 
-
+printf "\n"
 clear
-printf "\n\n"
+figlet fares.net
 printf "${r}============ SYSTEM ${z}\n"
 printf "  Date:\t\t${b}"$DATE"${z}\n"
 printf "  Kernel:\t"$KERNEL" ("$PL")\n"
-printf "  Uptime:\t"
-uptime | awk '{print $2, $3, $4 }' 
+printf "  Uptime:\t"$UPTIME"\n"
 printf "  Used Space:\t"
-df -H / |  awk '{print $5}' | sed -e /^Use/d
+df -H / |  awk '{print $5 " ("$3") of "$2}' | sed -e /^Use/d
 printf '  Load:\t\t'; uptime | awk '{print $10,$11,$12}';
 printf "  Who is on:\t"$USERS"\n"
 
 printf "\n${r}============ USER ${z}\n"
 printf "  User:\t\t"$ME" (uid:"$UID")\n"
-#printf "  Groups:\t"$MYGROUPS"\n"
 printf "  Working dir:\t"$CPWD"\n"
 printf "  Home dir:\t"$HOME"\n"
 
