@@ -38,7 +38,6 @@ fi
 
 printf "\n"
 clear
-printf "${r}============ SYSTEM ${z}\n"
 printf "\n\n"
 printf "${r}============ SYSTEM ${z} ${a}==> "$HOSTNAME" <==${z}\n"
 printf "  Date:\t\t${b}"$DATE"${z}\n"
@@ -66,7 +65,7 @@ printf "\n"
 printf "${r}============ SERVICES ${z}\n"
 serviceStatus apache2
 serviceStatus mysql
-serviceStatus bind9
+#serviceStatus bind9
 #serviceStatus "ufw    "
 
 printf "\n"
