@@ -1,11 +1,7 @@
 #!/bin/bash
 # sys shell script, shows system info
 # By Fares, Aug 2017
-<<<<<<< HEAD
 # version 1.0 - fares.net 3
-=======
-# version 1.0 - fares.net 2
->>>>>>> 00851283a441ba3412e6e2750701cd6d4a505f4c
 #################################
 
 a=`tput setaf 1`
@@ -42,13 +38,9 @@ fi
 
 printf "\n"
 clear
-<<<<<<< HEAD
-figlet fares.net
 printf "${r}============ SYSTEM ${z}\n"
-=======
 printf "\n\n"
 printf "${r}============ SYSTEM ${z} ${a}==> "$HOSTNAME" <==${z}\n"
->>>>>>> 00851283a441ba3412e6e2750701cd6d4a505f4c
 printf "  Date:\t\t${b}"$DATE"${z}\n"
 printf "  Kernel:\t"$KERNEL" ("$PL")\n"
 printf "  Uptime:\t"$UPTIME"\n"
